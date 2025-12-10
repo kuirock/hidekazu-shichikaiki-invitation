@@ -1,0 +1,419 @@
+/* --- ベース設定 --- */
+:root {
+    --text-main: #333;
+    --text-light: #f5f5f5;
+    --bg-dark: #1a1a1a;
+    --accent-gray: #e0e0e0;
+    --font-mincho: 'Zen Old Mincho', serif;
+    --font-gothic: 'Noto Sans JP', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-gothic);
+    color: var(--text-main);
+    line-height: 1.8;
+    background-color: #fff;
+    -webkit-font-smoothing: antialiased;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- ヘッダー（スライドショー） --- */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #000;
+}
+
+.hero-slider,
+.slide,
+.hero-slider::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.hero-slider::after {
+    content: '';
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.slide {
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    animation: slideShow 18s infinite;
+}
+
+.slide:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.slide:nth-child(2) {
+    animation-delay: 6s;
+}
+
+.slide:nth-child(3) {
+    animation-delay: 12s;
+}
+
+@keyframes slideShow {
+    0% {
+        opacity: 0;
+        transform: scale(1.05);
+    }
+
+    5% {
+        opacity: 1;
+    }
+
+    33% {
+        opacity: 1;
+    }
+
+    38% {
+        opacity: 0;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.main-title {
+    font-family: var(--font-mincho);
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
+}
+
+.sub-title {
+    font-family: var(--font-mincho);
+    font-size: 1.1rem;
+    letter-spacing: 0.2em;
+    margin-bottom: 10px;
+}
+
+.deco-line {
+    width: 350px;
+    height: 1px;
+    background: #fff;
+    margin: 0 auto;
+}
+
+/* --- 挨拶セクション --- */
+.section-greeting {
+    padding: 60px 0;
+}
+
+.content-frame {
+    max-width: 740px;
+    width: 100%;
+    border: 4px double var(--accent-gray);
+    padding: 50px;
+    margin: 0 auto;
+    background-color: #fff;
+    text-align: center;
+}
+
+.greeting-text {
+    font-family: var(--font-mincho);
+    font-size: 1rem;
+    line-height: 2.4;
+    display: inline-block;
+    text-align: left;
+}
+
+/* 署名エリア */
+.sender-area {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-family: var(--font-mincho);
+    width: 100%;
+}
+
+.closing-block {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.sender-name {
+    margin-top: 40px;
+    /* 名前を下げる */
+    font-size: 1.2rem;
+    white-space: nowrap;
+}
+
+@media (max-width: 767px) {
+    .content-frame {
+        padding: 40px 20px;
+        border-width: 3px;
+    }
+
+    .greeting-text {
+        font-size: 0.95rem;
+    }
+}
+
+/* --- 詳細セクション（黒背景） --- */
+.section-details {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    padding: 80px 0;
+}
+
+.section-title {
+    font-family: var(--font-mincho);
+    font-size: 1.5rem;
+    text-align: center;
+    letter-spacing: 0.1em;
+    margin-bottom: 50px;
+    color: #fff;
+}
+
+.info-dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 30px 50px;
+    max-width: 650px;
+    margin: 0 auto;
+    border-top: 1px solid #444;
+    padding-top: 30px;
+}
+
+.info-dl dt {
+    font-family: var(--font-mincho);
+    color: #aaa;
+    font-weight: normal;
+    min-width: 60px;
+}
+
+.info-dl dd {
+    border-bottom: 1px dotted #444;
+    padding-bottom: 30px;
+    margin-bottom: 0;
+}
+
+.info-dl dd:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.address {
+    display: block;
+    margin-top: 8px;
+    font-size: 0.9rem;
+    color: #ccc;
+    line-height: 1.6;
+}
+
+.text-link {
+    display: inline-block;
+    margin-top: 8px;
+    color: #8da4c3;
+    font-size: 0.9rem;
+    border-bottom: 1px solid #8da4c3;
+}
+
+/* --- アクセスセクション --- */
+.section-access {
+    padding: 80px 0;
+    background-color: #fff;
+}
+
+.section-title-dark {
+    font-family: var(--font-mincho);
+    font-size: 1.5rem;
+    text-align: center;
+    letter-spacing: 0.1em;
+    margin-bottom: 40px;
+    color: #333;
+}
+
+.map-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    background: #eee;
+    margin-bottom: 40px;
+    border: 1px solid #eee;
+}
+
+.map-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* アクセスリスト整理 */
+.access-container {
+    max-width: 700px;
+    margin: 0 auto 60px auto;
+}
+
+.access-heading {
+    font-family: var(--font-mincho);
+    font-size: 1.1rem;
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
+    margin-bottom: 24px;
+}
+
+.access-list {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    /* 左側固定幅 */
+    gap: 24px;
+}
+
+.access-list dt {
+    font-family: var(--font-mincho);
+    font-weight: bold;
+    position: relative;
+    padding-left: 12px;
+}
+
+.access-list dt::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 5px;
+    height: 5px;
+    background: #333;
+    transform: rotate(45deg);
+}
+
+.access-list dd {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 16px;
+}
+
+.access-sub-list li {
+    margin-bottom: 12px;
+}
+
+small {
+    color: #666;
+    font-size: 0.85em;
+}
+
+.highlight {
+    color: #d32f2f;
+    font-weight: bold;
+}
+
+/* スマホ表示調整 */
+@media (max-width: 767px) {
+
+    .info-dl,
+    .access-list {
+        display: block;
+        /* 縦積みに */
+    }
+
+    .info-dl dt,
+    .access-list dt {
+        margin-bottom: 8px;
+        color: #888;
+        /* 項目名を少し薄く */
+    }
+
+    .info-dl dt {
+        color: #aaa;
+    }
+
+    /* 詳細の項目名は明るく */
+
+    .info-dl dd,
+    .access-list dd {
+        margin-bottom: 32px;
+        padding-left: 10px;
+    }
+}
+
+/* --- ボタンエリア --- */
+.cta-area {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.btn-primary {
+    display: inline-block;
+    background-color: #ae982b;
+    color: #fff;
+    padding: 18px 40px;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    transition: opacity 0.3s;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary:hover {
+    opacity: 0.8;
+}
+
+.deadline {
+    margin-top: 20px;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+/* --- フッター --- */
+.site-footer {
+    background-color: var(--bg-dark);
+    color: #999;
+    padding: 40px 20px;
+    text-align: center;
+    font-size: 0.75rem;
+}
